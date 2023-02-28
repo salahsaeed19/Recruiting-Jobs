@@ -50,4 +50,17 @@ class job(models.Model):
 
     def __str__(self):
         return self.title
+    
 
+class apply(models.Model):
+    username = models.CharField(max_length=50)
+    email = models.EmailField()
+    link = models.CharField(max_length=100)
+    cv = models.FileField(upload_to="service/cv/", null=True)
+    coverletter = models.TextField(max_length=1000)
+    job = models.ForeignKey(job,on_delete=models.CASCADE,null=True)
+
+
+    def __str__(self):
+        return self.username
+    

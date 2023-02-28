@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load static %}
 <!-- header-start -->
@@ -11,6 +12,7 @@
             <div class="row ">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
+                        <a href="{% url 'offers' job.id %}">sss</a>
                         <h3>{{job.title}}</h3>
                     </div>
                 </div>
@@ -51,38 +53,39 @@
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                        <form action="#">
+                        <form method="post">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Your name">
+                                        <input type="text" placeholder="Your name" name="username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Email">
+                                        <input type="email" placeholder="Email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Website/Portfolio link">
+                                        <input type="text" placeholder="Website/Portfolio link" name="link" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                            <button type="button" id="inputGroupFileAddon03" ><i class="fa fa-cloud-upload" aria-hidden="true" required></i>
                                             </button>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-                                            <label class="custom-file-label" for="inputGroupFile03">Upload CV</label>
+                                            <input type="file" class="custom-file-input" name="cv" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" required>
+                                            <label class="custom-file-label" for="inputGroupFile03" >Upload CV</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
+                                        <textarea name="coverletter" id="" cols="30" rows="10" placeholder="Coverletter" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

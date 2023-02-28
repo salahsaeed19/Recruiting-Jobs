@@ -39,13 +39,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    {% for category in category %}
+                    {% for i in job %}
                         <div class="col-lg-4 col-xl-3 col-md-6">
                             <div class="single_catagory text-center">
-                                <a href="jobs.html"><h4>{{ category.name }}</h4></a>
+                                <a href="{%url 'all_jobs' i.category %}"><h4>{{ i.category }}</h4></a>
                             </div>
                         </div>
                     {% endfor %}
+                    {% comment %} {% for i in category %}
+                        <div class="col-lg-4 col-xl-3 col-md-6">
+                            <div class="single_catagory text-center">
+                                <a href=""><h4>{{ i.name }}</h4></a>
+                            </div>
+                        </div>
+                    {% endfor %} {% endcomment %}
                 </div>
             </div>
         </div>

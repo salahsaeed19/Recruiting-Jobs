@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- header-start -->
+{% block header %}{% include "includes/header.html" %}{% endblock %}
+<!-- header-end -->
+<!-- content-start -->
+{% block content %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Post </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+    <!-- job_listing_area_start  -->
+    <div class="job_listing_area plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-25">
+                    <div class="job_lists m-0">
+                        <div class="row">
+                            {% for of in free %}
+                                <div class="col-lg-12 col-md-12">
+                                    <h4><i class="fa fa-user"></i> {{of.username}} </a> </h4>
+                                    <p> <i class="fa fa-email"></i> {{ of.email }}</p>
+                                    <p> <i class="fa fa-link"></i> {{ of.link }}</p>
+                                    <p> <i class="fa fa-user"></i> {{ of.coverletter }}</p>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- job_listing_area_end  -->
+{% endblock %}
+<!-- content-end -->
+<!-- footer-start -->
+{% block footer %}
+    {% include "includes/footer.html" %}
+{% endblock  %}
+<!-- footer-end -->
