@@ -1,6 +1,4 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 from job import views
 from django.contrib.auth import views as auth_views
 
@@ -15,7 +13,7 @@ urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
     path("stttings/change_password/", auth_views.PasswordChangeView.as_view(template_name="registration/change_password.html"), name="change_password"),
     path("stttings/change_password/done/", auth_views.PasswordChangeDoneView.as_view(template_name="registration/password_change_done.html"), name="password_change_done"),
-    path("profile/", views.profile, name="profile"),
-    path("profilee/", views.profilee, name="profilee"),
+    # path("profile/", views.profile, name="profile"),
+    path("profile/<str:name>", views.profile, name="profile"),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

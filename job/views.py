@@ -7,7 +7,7 @@ from .models import category as categorys
 from .models import freelancer as freelancers
 from .models import job as jobs
 from .models import customer as user
-from .models import apply 
+from .models import apply
 from django.contrib.auth.models import User
 
 def index(request):
@@ -18,23 +18,25 @@ def index(request):
 
     return render(request, "pages/index.html", context)
 
-
+@login_required
 def job_details(request, pk):
     
     if request.method =="POST":
         username = request.user # new column [know the owner of the offer]
         email = request.POST['email']
         link = request.POST['link']
-        cv = request.POST['cv']
+        cv = request.FILES['cv']
         coverletter = request.POST['coverletter']
-        
+        job = jobs.objects.get(pk=pk)
         ap = apply.objects.create(
             username = username,
             email = email,
             link = link,
             cv = cv,
             coverletter = coverletter,
+            job=job,
         )
+        # ap.save()
         return redirect("index")
     job = jobs.objects.get(pk=pk)
     users = user.objects.get(pk=pk)
@@ -57,23 +59,37 @@ def job_details(request, pk):
 #     return render(request, "registration/signupcustomer.html", {"form": form})
 
 
+# def signup(request):
+#     form = SignUpForm()
+#     if request.method == "POST":
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+            
+#             auth_login(request, user)
+#             return redirect("index")
+#     return render(request, "registration/signup.html", {"form": form})
+
+
 def signup(request):
     form = SignUpForm()
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
+            x = freelancers.objects.create(user = User)
             auth_login(request, user)
             return redirect("index")
     return render(request, "registration/signup.html", {"form": form})
 
 
-@login_required
-def profile(request):
+# @login_required
+# def profile(request):
     
-    return render(request, "registration/profile.html")
+#     return render(request, "registration/profile.html")
 
 
+@login_required
 def all_jobs(request,c):
     #free = freelancers.objects.all().filter(request.user.category)
     job = jobs.objects.order_by('-id')[:5]
@@ -87,6 +103,7 @@ def all_jobs(request,c):
     return render(request,"pages/a.html",context)
 
 
+@login_required
 def offers(request,id):
     #x = request.GET['titl']
     #jobt=jobs.objects.filter(title=x)
@@ -94,14 +111,20 @@ def offers(request,id):
     #offers = apply.objects.all()
     jobb = jobs.objects.get(pk=id)
     free = apply.objects.filter(job=jobb)
-
+    count = len(free)
     context = {
-        "free":free
-        
+        "free":free,
+        "count": count
         }
     return render(request, "pages/offers.html", context)
 
-def profilee(request):
-    pass
+
+@login_required
+def profile(request, name):
+    users = User.objects.get(username=name)
+    context = {"users":users}
+    if users == request.user:
+        return render(request, "registration/profile.html", context)
+    return render(request, "registration/profile.html", context)
 #     free = apply.objects.filter(id=request.GET['id'])
 #     return render(request, "registration/profilee.html",{"free":free})

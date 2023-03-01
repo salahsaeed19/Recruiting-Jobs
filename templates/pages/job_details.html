@@ -53,7 +53,7 @@
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data" >
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
@@ -74,12 +74,12 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button type="button" id="inputGroupFileAddon03" ><i class="fa fa-cloud-upload" aria-hidden="true" required></i>
+                                            <button name="cv" type="button" id="inputGroupFileAddon03" ><i class="fa fa-cloud-upload" aria-hidden="true" required></i>
                                             </button>
                                         </div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="cv" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" required>
-                                            <label class="custom-file-label" for="inputGroupFile03" >Upload CV</label>
+                                            <label class="custom-file-label" name="cv" for="inputGroupFile03" >Upload CV</label>
                                         </div>
                                     </div>
                                 </div>

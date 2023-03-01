@@ -2,6 +2,20 @@
 {% load widget_tweaks %}
 {% load static %}
 {% block content %}
+<style>
+    body{
+        background-color:#f5f8fb;
+    }
+    .main{
+        background-image: url('/static/img/signin.svg');
+        background-repeat:no-repeat;
+        background-position:50% 30%
+    }
+    .salah{
+        width:45%;
+        margin :auto
+    }
+</style>
     <br>
     <br>
     {% if form.non_field_errors%}
@@ -11,9 +25,11 @@
         {%endfor%}
         </div>
     {%endif%}
-    <div class="container">
-        <section class="tab-pane fade show active">
-            <h1 class="card-title">Sign Up</h1>
+    {% comment %} <img src="{% static 'img/signin.svg' %}" > {% endcomment %}
+    <div class="container main" data-background-lg="/static/img/signin.svg">
+        <p class="text-center mb-4"><a href="{%url 'index'%}" class="text-gray-700"><i class="fa fa-angle-left mr-2"></i> Back to homepage</a></p>
+        <section class="tab-pane fade show active salah card p-4">
+            <h1 class=" m-auto">Create an account</h1>
             <br>
             <form method="post" novalidate>
                 {% csrf_token %}
@@ -29,11 +45,11 @@
                     </div>
                 {% endfor %}
                 <br>
-                <button type="submit" class="btn btn-primary btn-block mb-4">
+                <button type="submit" class="btn btn-dark btn-block mb-4">
                     SIGN IN
                 </button>
                 <br>
-                <div class="card-footer text-muted text-center">
+                <div class=" text-muted text-center">
                     Already have an account? <a href="{% url 'login' %}">Log in</a>
                 </div>
             </form>

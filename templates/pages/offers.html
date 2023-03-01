@@ -19,29 +19,58 @@
     </div>
     <!--/ bradcam_area  -->
     <!-- job_listing_area_start  -->
-    <div class="job_listing_area plus_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-25">
-                    <div class="job_lists m-0">
-                        <div class="row">
-                            {% for of in free %}
-                                <div class="col-lg-12 col-md-12">
-                                    <h4><i class="fa fa-user"></i> {{of.username}} </a> </h4>
-                                    <p> <i class="fa fa-email"></i> {{ of.email }}</p>
-                                    <p> <i class="fa fa-link"></i> {{ of.link }}</p>
-                                    <p> <i class="fa fa-user"></i> {{ of.coverletter }}</p>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div>
-                            {% endfor %}
-                        </div>
+        <div class="container my-5 py-5 text-dark">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10 col-xl-12" >
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-dark mb-0">Unread comments ({{count}})</h4>
                     </div>
+                    {% for of in free %}
+                        <div class="card mb-3 ">
+                            <div class="card-body ">
+                                <div class="d-flex flex-start w-100">
+                                    <img class="rounded-circle shadow-1-strong me-3 mr-4"
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="90" height="90" />&nbsp;&nbsp;
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h6 class="text-primary fw-bold mb-0 mr-2 ml-2 h6 ">
+                                                {{ of.username }}&nbsp;
+                                                <span class="text-dark ms-3 ml-2"> {{of.email}} </span>
+                                            </h6>
+                                            <p class="mb-0">2 days ago{{of.created_at.date}}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <p class="text-primary mb-0 btn text-primary">
+                                                <i class="fa fa-link"></i> <a href="{{ of.link }}" class=" text-primary">click here</a>
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <p class="text-dark ms-2 mb-0">
+                                                    Cover Letter
+                                                </p>
+                                                <div>
+                                                    <p class="mb-0">
+                                                        {{ of.coverletter }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex flex-row">
+                                                <a href="{{ of.cv.url }}" Download class="btn btn-primary">
+                                                    Download CV
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 <!-- job_listing_area_end  -->
 {% endblock %}
 <!-- content-end -->
