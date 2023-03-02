@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-9 ms-3">
+            <h4 class=" ml-3">General information</h4>
+            <div class="ml-4 mt-4">
+                <form method="post" >
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="exampleInputEmail1" class="text-dark">First Name</label>
+                            <input type="text" class="form-control" value=" {{user.username}} " id="#"  placeholder="Enter your first name" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="exampleInputEmail1" class="text-dark">Card</label>
+                            <input type="number" name="card" class="form-control" id="card" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="" class="text-dark">Country </label>
+                            <input type="text" name="country" class="form-control" id="country" placeholder="Gaza">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" required>
+                            <label class="custom-file-label" name="image" for="inputGroupFile03" >image</label>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="save" class="btn btn-primary ">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

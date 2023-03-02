@@ -15,5 +15,6 @@ urlpatterns = [
     path("stttings/change_password/done/", auth_views.PasswordChangeDoneView.as_view(template_name="registration/password_change_done.html"), name="password_change_done"),
     # path("profile/", views.profile, name="profile"),
     path("profile/<str:name>", views.profile, name="profile"),
-
+    path("user/customer/", views.add_customer, name="add_customer"),
+    # path("user/freelancer/", views.add_freelancer, name="add_freelancer"),
 ]
