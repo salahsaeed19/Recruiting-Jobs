@@ -28,7 +28,7 @@ class freelancer(models.Model):
     name_job = models.CharField(max_length=100, null=True)
     country = models.CharField(max_length=100)
     image = models.ImageField(upload_to="img/freelancer/", null=True)
-    category = models.ManyToManyField(category)
+    category = models.ForeignKey(category,on_delete=models.CASCADE,null=True)
 
 
     def __str__(self):

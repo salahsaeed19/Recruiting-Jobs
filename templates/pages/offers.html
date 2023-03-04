@@ -34,7 +34,7 @@
                                     <div class="w-100">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h6 class="text-primary fw-bold mb-0 mr-2 ml-2 h6 ">
-                                                {{ of.username }}&nbsp;
+                                                <a href="{% url 'profile' of.username %}" >{{ of.username }}&nbsp;</a>
                                                 <span class="text-dark ms-3 ml-2"> {{of.email}} </span>
                                             </h6>
                                             <p class="mb-0">2 days ago{{of.created_at.date}}</p>

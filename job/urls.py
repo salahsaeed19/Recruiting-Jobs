@@ -13,8 +13,10 @@ urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
     path("stttings/change_password/", auth_views.PasswordChangeView.as_view(template_name="registration/change_password.html"), name="change_password"),
     path("stttings/change_password/done/", auth_views.PasswordChangeDoneView.as_view(template_name="registration/password_change_done.html"), name="password_change_done"),
-    # path("profile/", views.profile, name="profile"),
     path("profile/<str:name>", views.profile, name="profile"),
     path("user/customer/", views.add_customer, name="add_customer"),
-    # path("user/freelancer/", views.add_freelancer, name="add_freelancer"),
+    path("user/freelancer/", views.add_freelancer, name="add_freelancer"),
+    path("create_job_customer",views.createjob,name="create_job_customer"),
+    path("browse_more_job",views.browse_more_job,name="browse_more_job"),
+
 ]

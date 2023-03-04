@@ -12,7 +12,7 @@
             <div class="row ">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <a href="{% url 'offers' job.id %}">sss</a>
+                        {% comment %} <a href="{% url 'offers' job.id %}">sss</a> {% endcomment %}
                         <h3>{{job.title}}</h3>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Your name" value="{{user.username}}" name="username" disabled>
+                                        <input type="text" placeholder="Your name" name="username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <input type="url" placeholder="Website/Portfolio link" name="link" required>
+                                        <input type="text" placeholder="Website/Portfolio link" name="link" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -110,42 +110,6 @@
                                 <li>Location: <span>{{ users.country }}</span></li>
                                 <li>Job Nature: <span>{{ job.job_nature }}</span></li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="share_wrap d-flex">
-                        <span>Share at:</span>
-                        <ul>
-                            <li><a href="#"> <i class="fa fa-facebook"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-google-plus"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-twitter"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
-                        </ul>
-                    </div>
-                    <div class="job_location_wrap">
-                        <div class="job_lok_inner">
-                            <div id="map" style="height: 200px;"></div>
-                            <script>
-                                function initMap() {
-                                    var uluru = {lat: -25.363, lng: 131.044};
-                                    var grayStyles = [
-                                    {
-                                        featureType: "all",
-                                        stylers: [
-                                            { saturation: -90 },
-                                            { lightness: 50 }
-                                        ]
-                                    },
-                                        {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
-                                    ];
-                                    var map = new google.maps.Map(document.getElementById('map'), {
-                                        center: {lat: -31.197, lng: 150.744},
-                                        zoom: 9,
-                                        styles: grayStyles,
-                                        scrollwheel:  false
-                                    });
-                                }
-                            </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- header-start -->
+{% block header %}{% include "includes/header.html" %}{% endblock %}
+<!-- header-end -->
+<!-- content-start -->
+{% block content %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Jobs Available</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+    <!-- job_listing_area_start  -->
+    <div class="job_listing_area plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-25">
+                    <div class="job_lists m-0">
+                        <div class="row">
+                            {% for job in topics %}
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single_jobs white-bg d-flex justify-content-between">
+                                        <div class="jobs_left d-flex align-items-center">
+                                            <div class="thumb">
+                                                <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
+                                            </div>
+                                            <div class="jobs_conetent">
+                                                <h4>{{job.title}}</h4>
+                                                <div class="links_locat d-flex align-items-center">
+                                                    <div class="location">
+                                                        <p> <i class="fa fa-user"></i>{{job.created_by}}</p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p> <i class="fa fa-clock-o"></i>{{ job.job_nature }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jobs_right">
+                                            <div class="apply_now">
+                                                <a href="{% url 'offers' job.id %}" class="boxed-btn3">&nbsp;&nbsp; Offers &nbsp;&nbsp;</a>
+                                                <a href="{% url 'job_details' job.pk %}" class="boxed-btn3">Apply Now</a>
+                                            </div>
+                                            <div class="date">
+                                                <p>Date line: {{job.deadline.date}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                {% if topics.has_other_pages %}
+                                    <div class="pagination_wrap">
+                                        <ul>
+                                            {% if topics.has_previous %}
+                                                <li><a href="?page={{ topics.previous_page_number }}"> <i class="ti-angle-left"></i> </a></li>
+                                            {% else %}
+                                                <li class=" "> <i class="ti-angle-left"></i> </li>
+                                            {% endif %}
+                                            {% for page_num in topics.paginator.page_range %}
+                                                {% if topics.number == page_num %}
+                                                    <li><span>{{ page_num }}<span class="sr-only">(current)</span></span></li>
+                                                {% else %}
+                                                    <li><a href="?page={{ page_num }}"><span>{{ page_num }}</span></a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if topics.has_next %}
+                                                <li><a href="?page={{ topics.next_page_number }}"> <i class="ti-angle-right"></i> </a></li>
+                                            {% else %}
+                                                <li class=" disabled"> <i class="ti-angle-right"></i> </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!-- job_listing_area_end  -->
+<!-- content-end -->
+<!-- footer-start -->
+{% block footer %}
+    {% include "includes/footer.html" %}
+{% endblock  %}
+<!-- footer-end -->
