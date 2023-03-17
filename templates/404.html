@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+
+{% comment %} {% block title %} 404 Error {% endblock %}  {% endcomment %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <main>
+        <section class="vh-100 d-flex align-items-center justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mt-5 d-flex  justify-content-center ">
+                        <div class="mt-4 ">
+                            <img class="w-50"  src="https://img.freepik.com/free-vector/error-404-concept-landing-page_52683-18632.jpg?w=1060&t=st=1678787039~exp=1678787639~hmac=7e87bdc5e90d9765d30ecc5f0ea1981353e14630a484ad58051a093452a20a62"  alt="404 not found">
+                            <h1 class="mt-5">Page not found</h1>
+                            <p class="my-4 " style="with:600px">Oops! Looks like you followed a bad link. If you think this is a problem with us, please tell us.</p>
+                            <a class="btn btn-dark animate-hover rounded" href="/"><i class="fa fa-chevron-left mr-3 pl-2 animate-left-3 rounded"></i>Go back home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

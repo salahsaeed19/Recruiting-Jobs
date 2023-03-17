@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    {% comment %} <style>
+    <style>
         body{
             background-color:#f5f8fb;
         }
@@ -19,24 +19,18 @@
         .cover{
             background-repeat:no-repeat;
         }
-        .image{
-            object-fit:cover;
-            object-position: top 0%;
-            
-        }
-    </style> {% endcomment %}
-    {% comment %} <div class="container mt-5">
+    </style>
+    <br><br>
+    <div class="container mt-5">
         <div class="row">
             <div class="col-3 card p-0">
-                <div style=" "> 
-                    <div class="p-0 m-0 d-block ml-n2 bg-red ">
-                        <img src="{% static 'img/profile-cover11.jpg' %}" alt="user image" class="w-100 image" height="180" >
+                <div>
+                    <div class="p-0 m-0 d-block ml-n2 bg-red">
+                        <img src="{% static 'img/profile-cover.jpg' %}" alt="user image" class="w-100" height="180" >
                     </div>
-                    <span class="border bg-danger rounded-circle m-auto  " style=" width:140px; height:140px;  border:5px solid white">
-                        <img src="{% static 'img/candiateds/4.png' %}" alt="user image" width="140" height="140" class="mx-auto d-block rounded-circle" style=" border:8px solid white; margin-top:-100px; z-index:100; position:relative" >
-                    </span> 
+                    <img src="{% static 'img/candiateds/4.png' %}" alt="user image" width="140" height="140" class="mx-auto d-block rounded-circle" style="margin-top:-70px">
                 </div>
-                <div class="mt-0 text-center">
+                <div class="mt-2 text-center">
                     <p>{{ users.username }}</p>
                 </div>
                 <div class=" text-center">
@@ -115,41 +109,6 @@
                     
                 </div>
             {% endif %}
-        </div>
-    </div> {% endcomment %}
-    <div class="" >
-        <div>
-            <img src="{% static 'img/profile-cover11.jpg' %}" class="w-100" style="height:400px;object-fit:cover">
-        </div>
-        <div class="container">
-            <div class="container w-100  d-block" style=" z-index:11; position:absolute;top:180px;">
-                <div class="card p-4" style="">
-                <div class="row " style="">    
-                    <div class="col-4">
-                            <div class="">
-                                <div style="height:300px;">
-                                    <img src="{% static 'img/person.jpg' %}" class="rounded d-block" style="height:100%;width:100%;">
-                                </div>
-                                <div class="mt-4 text-dark">
-                                    <p class="text-dark"> <i class="fa fa-map-marker"></i> California, USA</p>
-                                    <p class="fa fa-clock-o text-dark"> Joined 16, 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="text-dark">
-                                <p> <span class="h4 text-dark">{{ users.username }}</span> &nbsp;{{ users.email|default:'@gmail.com' }}</p>
-                                <p class="text-dark">job title </p>
-                                <p class="text-dark">{% lorem 2 b  %}</p>
-                            </div>
-                            <div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               </div>
-            </div>
         </div>
     </div>
 {% endblock %}

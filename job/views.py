@@ -10,10 +10,9 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def index(request):
     category = categorys.objects.all()
-    c = customer.objects.all()
-    job = jobs.objects.order_by('-id').reverse()[:8]
+    job = jobs.objects.order_by('id')[:6]
     freelancer = freelancers.objects.order_by('-id')[:10]
-    context = {"category":category, "job": job, "freelancer": freelancer,"customer":c}
+    context = {"category":category, "job": job, "freelancer": freelancer}
     return render(request, "pages/index.html", context)
 
 
@@ -84,9 +83,10 @@ def offers(request,id):
 @login_required
 def profile(request, name):
     users = User.objects.get(username=name)
-    context = {"users":users}
+    context = {"users": users}
     if users == request.user:
-        return render(request, "registration/profile.html", context)
+        f = freelancers.objects.filter(user = users)
+        return render(request, "registration/profile.html", {"users": users,"f": f})
     return render(request, "registration/profile.html", context)
 
 
@@ -95,11 +95,9 @@ def add_customer(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST, request.FILES)
         if form.is_valid():
-            # Create a new customer object with the uploaded data
             customer = form.save(commit=False)
             customer.user = request.user
             customer.save()
-            # Redirect to a success page or show a success message
             return redirect('index')
     else:
         form = CustomerForm()
@@ -158,40 +156,3 @@ def browse_more_job(request):
     except EmptyPage:
         topics = paginator.page(paginator.num_pages)
     return render(request,'pages/browse_more_job.html',{'job':job, 'topics':topics})
-
-
-# def create_job_customer(request,id):
-
-#     if request.method =="POST":
-#         title = request.POST['title']
-#         description = request.POST['description']
-#         deadline = request.POST['deadline']
-#         salary = request.POST['salary']
-#         category = request.POST['category']
-#         job_nature = request.POST['job_nature']
-
-#         created_by = request.user.customer
-#         if category in categorys.objects.filter(name=category):
-#             objjop = jobs.objects.create(
-#                 created_by= created_by,
-#                 title=title,
-#                 description=description,
-#                 deadline=deadline,
-#                 salary=salary,
-#                 category = categorys.objects.filter(name=category),
-#                 job_nature=job_nature,
-#         )
-#         else:
-#             objjop = jobs.objects.create(
-#                 created_by= created_by,
-#                 title=title,
-#                 description=description,
-#                 deadline=deadline,
-#                 salary=salary,
-#                 category=categorys.objects.create(name = category),
-#                 job_nature=job_nature,
-#         )
-
-#         return HttpResponse("Jop creates succesfuly ☻")
-#     return render (request,"pages/create_job.html",{"customer":customer})
-

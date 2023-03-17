@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="brouse_job text-right">
-                        <a href="" class="boxed-btn4">Browse More Job</a>
+                        <a href="{% url 'browse_more_job' %}" class="boxed-btn4">Browse More Job</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                                         <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
                                     </div>
                                     <div class="jobs_conetent">
-                                        <a href="job_details.html"><h4>{{job.title}}</h4></a>
+                                        <a><h4>{{job.title}}</h4></a>
                                         <div class="links_locat d-flex align-items-center">
                                             <div class="location">
                                                 <p> <i class="fa fa-user"></i>{{job.created_by}}</p>
@@ -126,7 +126,7 @@
                                 <div class="thumb">
                                     <img src="{{freelancer.image.url}}" alt="">
                                 </div>
-                                <a href="#"><h4>{{freelancer.user}}</h4></a>
+                                <a ><h4>{{freelancer.user}}</h4></a>
                                 <p>{{ freelancer.name_job }}</p>
                             </div>
                         {% endfor %}
