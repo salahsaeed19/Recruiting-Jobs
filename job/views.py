@@ -10,8 +10,8 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def index(request):
     category = categorys.objects.all()
-    job = jobs.objects.order_by('id')[:6]
-    freelancer = freelancers.objects.order_by('-id')[:10]
+    job = jobs.objects.order_by('id')[:8]
+    freelancer = freelancers.objects.order_by('-id')[:8]
     context = {"category":category, "job": job, "freelancer": freelancer}
     return render(request, "pages/index.html", context)
 
