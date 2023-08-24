@@ -18,5 +18,4 @@ urlpatterns = [
     path("user/freelancer/", views.add_freelancer, name="add_freelancer"),
     path("create_job/",views.createjob,name="create_job_customer"),
     path("browse_more/",views.browse_more_job,name="browse_more_job"),
-
 ]
